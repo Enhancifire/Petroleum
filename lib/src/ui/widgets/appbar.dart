@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+AppBar customAppBar(
+  BuildContext context, {
+  Key? key,
+  Widget? leading,
+  bool automaticallyImplyLeading = true,
+  Widget? title,
+  String titleText = 'Engenz',
+  List<Widget>? actions,
+  Widget? flexibleSpace,
+  PreferredSizeWidget? bottom,
+  double? elevation,
+  double? scrolledUnderElevation,
+  bool Function(ScrollNotification) notificationPredicate =
+      defaultScrollNotificationPredicate,
+  Color? shadowColor,
+  Color? surfaceTintColor = Colors.transparent,
+  ShapeBorder? shape,
+  Color? backgroundColor,
+  Color? foregroundColor,
+  IconThemeData? iconTheme,
+  IconThemeData? actionsIconTheme,
+  bool primary = true,
+  bool? centerTitle = false,
+  bool excludeHeaderSemantics = false,
+  double? titleSpacing,
+  double toolbarOpacity = 1.0,
+  double bottomOpacity = 1.0,
+  double? toolbarHeight,
+  double? leadingWidth = 79,
+  TextStyle? toolbarTextStyle,
+  TextStyle? titleTextStyle,
+  SystemUiOverlayStyle? systemOverlayStyle,
+  bool forceMaterialTransparency = false,
+  Clip? clipBehavior,
+}) {
+  return AppBar(
+    key: key,
+    leading: leading,
+    automaticallyImplyLeading: automaticallyImplyLeading,
+    flexibleSpace: flexibleSpace,
+    bottom: bottom,
+    elevation: elevation,
+    scrolledUnderElevation: scrolledUnderElevation,
+    notificationPredicate: notificationPredicate,
+    shadowColor: shadowColor,
+    surfaceTintColor: surfaceTintColor,
+    shape: shape,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+    iconTheme: iconTheme,
+    actionsIconTheme: actionsIconTheme,
+    primary: primary,
+    centerTitle: centerTitle,
+    excludeHeaderSemantics: excludeHeaderSemantics,
+    titleSpacing: titleSpacing,
+    toolbarOpacity: toolbarOpacity,
+    bottomOpacity: bottomOpacity,
+    toolbarHeight: toolbarHeight,
+    leadingWidth: leadingWidth,
+    toolbarTextStyle: toolbarTextStyle,
+    titleTextStyle: titleTextStyle,
+    systemOverlayStyle: systemOverlayStyle,
+    forceMaterialTransparency: forceMaterialTransparency,
+    clipBehavior: clipBehavior,
+    title: title ??
+        Text(
+          titleText,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+    actions: [
+      ...?actions,
+      // SizedBox(
+      //   width: widthValue(context, 12),
+      // )
+    ],
+  );
+}
