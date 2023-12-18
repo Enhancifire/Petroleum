@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petroleum/src/features/records/widgets/petrol_record_widget.dart';
 import 'package:petroleum/src/ui/widgets/appbar.dart';
+import 'package:petroleum/src/ui/widgets/bottomNavbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,24 +18,12 @@ class HomePage extends StatelessWidget {
           horizontal: 24,
           vertical: 16,
         ),
-        child: ListView(
-          children: [
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-            // PetrolRecordTile(),
-          ],
-        ),
+        // child: Expanded(
+        //   child: Container(),
+        // ),
       ),
+      extendBody: true,
+      bottomNavigationBar: FloatingBottomNavbar(currentIndex: 0),
     );
   }
 }

@@ -5,4 +5,6 @@ class SupabaseConstants {
 
   static const String userDetailsTable = "user_details";
   static const String recordsTable = "records";
+
+  static const String profilePicsBucket = "profile-pics";
 }

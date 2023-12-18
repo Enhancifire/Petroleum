@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:petroleum/src/ui/colors.dart';
 
+const double borderRadius = 16;
+
 appTheme() {
   return ThemeData.dark().copyWith(
-    useMaterial3: true,
+    // useMaterial3: true,
+    useMaterial3: false,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.periwinkle,
@@ -12,7 +15,21 @@ appTheme() {
     scaffoldBackgroundColor: AppColors.bgColor,
     inputDecorationTheme: const InputDecorationTheme(
       filled: true,
-      fillColor: Color(0xFFD0CBF6),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      // fillColor: Color(0xFFD0CBF6),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 16,
+        ),
+      ),
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
@@ -22,7 +39,7 @@ appTheme() {
     ),
     textTheme: TextTheme(
       displayLarge: TextStyle(
-        fontSize: 42,
+        fontSize: 58,
         letterSpacing: _letterSpacingFromPercent(-5),
         height: _lineHeightFromPercent(94),
         color: AppColors.periwinkle,

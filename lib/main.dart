@@ -4,8 +4,8 @@ import 'package:petroleum/src/core/initializer/initializer.dart';
 import 'package:petroleum/src/petroleum.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Initializer.initialize();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const ProviderScope(
       child: Petroleum(),
