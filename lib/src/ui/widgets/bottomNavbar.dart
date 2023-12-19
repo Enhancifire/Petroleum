@@ -1,5 +1,7 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:petroleum/src/core/routes/router.dart';
 import 'package:petroleum/src/core/utils/size_utils.dart';
 import 'package:petroleum/src/ui/colors.dart';
 import 'package:petroleum/src/ui/theme.dart';
@@ -43,39 +45,18 @@ import 'package:petroleum/src/ui/theme.dart';
 //   }
 // }
 
-class FloatingBottomNavbar extends StatelessWidget {
+class FloatingBottomNavbar extends StatefulWidget {
+  final int currentIndex;
+
   const FloatingBottomNavbar({super.key, required this.currentIndex});
 
-  final int currentIndex;
+  @override
+  State<FloatingBottomNavbar> createState() => _FloatingBottomNavbarState();
+}
+
+class _FloatingBottomNavbarState extends State<FloatingBottomNavbar> {
   @override
   Widget build(BuildContext context) {
-    // return BottomNavigationBar(
-    //   items: [
-    //     BottomNavigationBarItem(
-    //       icon: Icon(Icons.home),
-    //       label: 'Home',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(Icons.list),
-    //       label: 'Records',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(Icons.add),
-    //       label: 'Add',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(Icons.motorcycle),
-    //       label: 'Vehicles',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(Icons.person),
-    //       label: 'Profile',
-    //     ),
-    //   ],
-    //   currentIndex: currentIndex,
-    //   onTap: (val) {},
-    //
-    // );
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: widthValue(context, 30),
@@ -90,30 +71,26 @@ class FloatingBottomNavbar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(
-              onPressed: () {},
+            _FloatingNavbarItemButton(
               icon: Icon(
                 Icons.home,
-                color: currentIndex == 0
+                color: widget.currentIndex == 0
                     ? AppColors.titleTextColor
                     : Color(0xFF182A3A),
               ),
+              isActive: widget.currentIndex == 0,
+              onTap: () => switchToPage(0),
             ),
-            IconButton(
-              onPressed: () {},
+            _FloatingNavbarItemButton(
+              onTap: () => switchToPage(1),
               icon: Icon(
                 Icons.list,
-                color: currentIndex == 1
+                color: widget.currentIndex == 1
                     ? AppColors.titleTextColor
                     : Color(0xFF182A3A),
               ),
+              isActive: widget.currentIndex == 1,
             ),
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: Icon(
-            //     Icons.add,
-            //   ),
-            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton.small(
@@ -125,26 +102,88 @@ class FloatingBottomNavbar extends StatelessWidget {
                 ),
               ),
             ),
-            IconButton(
-              onPressed: () {},
+            _FloatingNavbarItemButton(
+              onTap: () => switchToPage(2),
               icon: Icon(
                 Icons.motorcycle,
-                color: currentIndex == 2
+                color: widget.currentIndex == 2
                     ? AppColors.titleTextColor
                     : Color(0xFF182A3A),
               ),
+              isActive: widget.currentIndex == 2,
             ),
-            IconButton(
-              onPressed: () {},
+            _FloatingNavbarItemButton(
+              onTap: () => switchToPage(3),
               icon: Icon(
                 Icons.person,
-                color: currentIndex == 3
+                color: widget.currentIndex == 3
                     ? AppColors.titleTextColor
                     : Color(0xFF182A3A),
               ),
+              isActive: widget.currentIndex == 3,
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  switchToPage(int index) {
+    if (widget.currentIndex == index) {
+      return;
+    } else {
+      switch (index) {
+        case 0:
+          GoRouter.of(context).go(AppRoutes.home);
+          break;
+
+        case 1:
+          GoRouter.of(context).go(AppRoutes.records);
+          break;
+
+        case 2:
+          GoRouter.of(context).go(AppRoutes.vehicles);
+          break;
+
+        case 3:
+          GoRouter.of(context).go(AppRoutes.profile);
+          break;
+      }
+    }
+  }
+}
+
+class _FloatingNavbarItemButton extends StatelessWidget {
+  final Widget icon;
+
+  final bool isActive;
+  final Function onTap;
+  const _FloatingNavbarItemButton({
+    required this.icon,
+    required this.isActive,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () => onTap(),
+      // icon: Icon(
+      //   Icons.person,
+      //   color: isActive ? AppColors.titleTextColor : const Color(0xFF182A3A),
+      // ),
+      icon: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: isActive
+                ? BorderSide(
+                    color: Color(0xFF182A3A),
+                    width: 3,
+                  )
+                : BorderSide.none,
+          ),
+        ),
+        child: icon,
       ),
     );
   }

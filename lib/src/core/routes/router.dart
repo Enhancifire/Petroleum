@@ -12,6 +12,7 @@ import 'package:petroleum/src/features/profile/models/profile_model.dart';
 import 'package:petroleum/src/features/profile/views/complete_profile_screen.dart';
 import 'package:petroleum/src/features/records/views/records_page.dart';
 import 'package:petroleum/src/features/splash/view/splash_page.dart';
+import 'package:petroleum/src/features/vehicles/views/vehicle_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
@@ -37,6 +38,9 @@ class AppRoutes {
 
   // Records
   static const String records = "/records";
+
+  //Profile
+  static const String profile = "/profile";
 
   static const List<String> authRoutes = [
     login,
@@ -90,14 +94,19 @@ GoRouter router(RouterRef ref) {
             return const HomePage();
           }),
       GoRoute(
-          path: AppRoutes.vehicles,
-          builder: (context, state) {
-            return const ComingSoonPage();
-          }),
-      GoRoute(
           path: AppRoutes.records,
           builder: (context, state) {
             return const RecordsPage();
+          }),
+      GoRoute(
+          path: AppRoutes.vehicles,
+          builder: (context, state) {
+            return const VehicleScreen();
+          }),
+      GoRoute(
+          path: AppRoutes.profile,
+          builder: (context, state) {
+            return const ComingSoonPage();
           }),
     ],
     redirect: (context, state) {

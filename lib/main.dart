@@ -4,11 +4,13 @@ import 'package:petroleum/src/core/initializer/initializer.dart';
 import 'package:petroleum/src/petroleum.dart';
 
 Future<void> main() async {
-  await Initializer.initialize();
+  final container = ProviderContainer();
   WidgetsFlutterBinding.ensureInitialized();
+  await container.read(initializerProvider);
   runApp(
-    const ProviderScope(
-      child: Petroleum(),
+    UncontrolledProviderScope(
+      container: container,
+      child: const Petroleum(),
     ),
   );
 }

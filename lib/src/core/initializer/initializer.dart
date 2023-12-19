@@ -6,9 +6,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class Initializer {
   Initializer._();
 
-  static Future<void> initialize() async {
+  static Future<void> initialize(Ref ref) async {
     await _initializeSupabase();
-    await _initializeProfile();
+    final supabase = Supabase.instance.client;
+    if (supabase.auth.currentSession != null) {
+      await _initializeProfile(ref);
+    }
   }
 
   static Future<void> _initializeSupabase() async {
@@ -21,10 +24,12 @@ class Initializer {
     );
   }
 
-  static Future<void> _initializeProfile() async {
-    // final riverpodContainer = ProviderContainer();
-    // final profileController =
-    //     riverpodContainer.read(profileControllerProvider.notifier);
-    // await profileController.getUserProfile();
+  static Future<void> _initializeProfile(Ref ref) async {
+    final profileController = ref.read(profileControllerProvider);
+    await profileController.getUserProfile();
   }
 }
+
+final initializerProvider = Provider((ref) async {
+  await Initializer.initialize(ref);
+});

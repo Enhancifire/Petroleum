@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:petroleum/src/features/records/controllers/records_controller.dart';
 import 'package:petroleum/src/features/records/widgets/petrol_record_widget.dart';
 import 'package:petroleum/src/ui/widgets/appbar.dart';
+import 'package:petroleum/src/ui/widgets/bottomNavbar.dart';
 
 class RecordsPage extends ConsumerWidget {
   const RecordsPage({super.key});
@@ -39,6 +40,8 @@ class RecordsPage extends ConsumerWidget {
           ),
         ),
       ),
+      extendBody: true,
+      bottomNavigationBar: const FloatingBottomNavbar(currentIndex: 1),
     );
   }
 }

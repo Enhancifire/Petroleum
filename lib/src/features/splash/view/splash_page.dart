@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 import 'package:petroleum/src/core/providers/supabase.dart';
 import 'package:petroleum/src/core/routes/router.dart';
 import 'package:petroleum/src/features/profile/controllers/profile_controller.dart';
@@ -29,6 +30,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
 
       final session = supa.auth.currentSession;
       if (session != null) {
+        Logger().i("Logged in");
         final profile =
             await ref.read(profileControllerProvider).getUserProfile();
         if (mounted) {

@@ -23,6 +23,9 @@ class ProfileController {
   });
 
   Future<UserProfileModel?> getUserProfile() async {
+    if (client.auth.currentUser == null) {
+      return null;
+    }
     final userId = client.auth.currentUser!.id;
 
     final res = await client
