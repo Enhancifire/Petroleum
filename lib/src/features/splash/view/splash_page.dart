@@ -34,7 +34,9 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
         final profile =
             await ref.read(profileControllerProvider).getUserProfile();
         if (mounted) {
-          if (profile!.isComplete) {
+          if (profile == null) {
+            GoRouter.of(context).go(AppRoutes.completeProfile);
+          } else if (profile.isComplete) {
             GoRouter.of(context).go(AppRoutes.home);
           } else {
             GoRouter.of(context).go(AppRoutes.completeProfile);

@@ -82,14 +82,14 @@ class ProfileController {
 
     logger.i(userProfile);
 
-    // if (profile != null) {
-    //   final loc = await uploadProfilePicture(profilePicture!);
-    //   if (loc != null) {
-    //     profile = profile?.copyWith(profilePictureUrl: loc);
-    //   } else {
-    //     return;
-    //   }
-    // }
+    if (profile != null) {
+      final loc = await uploadProfilePicture(profilePicture!);
+      if (loc != null) {
+        userProfile = userProfile?.copyWith(profilePictureUrl: loc);
+      } else {
+        return;
+      }
+    }
 
     if (firstName != null) {
       userProfile = userProfile?.copyWith(firstName: firstName);
@@ -129,21 +129,24 @@ class ProfileController {
     final userId = client.auth.currentUser!.id;
 
     final end = file.path.split(".").last;
-    final path = "public/$userId.$end";
+    final path = "public/$userId/profile.$end";
 
     logger.i(path);
 
     try {
-      final res =
-          await client.storage.from(SupabaseConstants.profilePicsBucket).upload(
-                path,
-                file,
-                fileOptions: const FileOptions(
-                  upsert: false,
-                  cacheControl: '3600',
-                ),
-              );
-      return res;
+      // final res =
+      await client.storage.from(SupabaseConstants.profilePicsBucket).upload(
+            path,
+            file,
+            fileOptions: const FileOptions(
+              upsert: false,
+              cacheControl: '3600',
+            ),
+          );
+      final imageUrl = client.storage
+          .from(SupabaseConstants.profilePicsBucket)
+          .getPublicUrl(path);
+      return imageUrl;
     } catch (e) {
       logger.e(e);
       return null;
