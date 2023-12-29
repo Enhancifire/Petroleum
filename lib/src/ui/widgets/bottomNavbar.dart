@@ -6,45 +6,6 @@ import 'package:petroleum/src/core/utils/size_utils.dart';
 import 'package:petroleum/src/ui/colors.dart';
 import 'package:petroleum/src/ui/theme.dart';
 
-// class FloatingBottomNavbar extends StatelessWidget {
-//   const FloatingBottomNavbar({super.key, required this.currentIndex});
-//
-//   final int currentIndex;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return DotNavigationBar(
-//       enableFloatingNavBar: true,
-//       borderRadius: borderRadius,
-//       backgroundColor: AppColors.periwinkle,
-//       selectedItemColor: AppColors.bgColor,
-//       // unselectedItemColor: Color(0xFF182A3A),
-//       unselectedItemColor: Colors.black38,
-//       items: [
-//         DotNavigationBarItem(
-//           icon: Icon(Icons.home),
-//         ),
-//         DotNavigationBarItem(
-//           icon: Icon(Icons.list),
-//         ),
-//         DotNavigationBarItem(
-//           icon: Icon(Icons.add),
-//         ),
-//         DotNavigationBarItem(
-//           icon: Icon(Icons.motorcycle),
-//         ),
-//         DotNavigationBarItem(
-//           icon: Icon(Icons.person),
-//         ),
-//       ],
-//       currentIndex: currentIndex,
-//       onTap: (index) {
-//         // navShell.goBranch(index);
-//       },
-//     );
-//   }
-// }
-
 class FloatingBottomNavbar extends StatefulWidget {
   final int currentIndex;
 
@@ -94,7 +55,9 @@ class _FloatingBottomNavbarState extends State<FloatingBottomNavbar> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton.small(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).push(AppRoutes.addRecord);
+                },
                 backgroundColor: AppColors.bgColor,
                 child: const Icon(
                   Icons.add,

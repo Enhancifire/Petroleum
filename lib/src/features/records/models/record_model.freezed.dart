@@ -20,8 +20,8 @@ RecordModel _$RecordModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecordModel {
-  int get id => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   int get kmCount => throw _privateConstructorUsedError;
@@ -42,8 +42,8 @@ abstract class $RecordModelCopyWith<$Res> {
       _$RecordModelCopyWithImpl<$Res, RecordModel>;
   @useResult
   $Res call(
-      {int id,
-      DateTime createdAt,
+      {int? id,
+      DateTime? createdAt,
       DateTime date,
       String userId,
       int kmCount,
@@ -65,8 +65,8 @@ class _$RecordModelCopyWithImpl<$Res, $Val extends RecordModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
     Object? date = null,
     Object? userId = null,
     Object? kmCount = null,
@@ -75,14 +75,14 @@ class _$RecordModelCopyWithImpl<$Res, $Val extends RecordModel>
     Object? rate = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -120,8 +120,8 @@ abstract class _$$RecordModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      DateTime createdAt,
+      {int? id,
+      DateTime? createdAt,
       DateTime date,
       String userId,
       int kmCount,
@@ -141,8 +141,8 @@ class __$$RecordModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
     Object? date = null,
     Object? userId = null,
     Object? kmCount = null,
@@ -151,14 +151,14 @@ class __$$RecordModelImplCopyWithImpl<$Res>
     Object? rate = null,
   }) {
     return _then(_$RecordModelImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -191,8 +191,8 @@ class __$$RecordModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RecordModelImpl implements _RecordModel {
   const _$RecordModelImpl(
-      {required this.id,
-      required this.createdAt,
+      {this.id,
+      this.createdAt,
       required this.date,
       required this.userId,
       required this.kmCount,
@@ -204,9 +204,9 @@ class _$RecordModelImpl implements _RecordModel {
       _$$RecordModelImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final DateTime createdAt;
+  final DateTime? createdAt;
   @override
   final DateTime date;
   @override
@@ -263,8 +263,8 @@ class _$RecordModelImpl implements _RecordModel {
 
 abstract class _RecordModel implements RecordModel {
   const factory _RecordModel(
-      {required final int id,
-      required final DateTime createdAt,
+      {final int? id,
+      final DateTime? createdAt,
       required final DateTime date,
       required final String userId,
       required final int kmCount,
@@ -276,9 +276,9 @@ abstract class _RecordModel implements RecordModel {
       _$RecordModelImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  DateTime get createdAt;
+  DateTime? get createdAt;
   @override
   DateTime get date;
   @override

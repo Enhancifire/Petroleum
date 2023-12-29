@@ -25,7 +25,7 @@ appTheme() {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 16,
         ),

@@ -10,6 +10,7 @@ import 'package:petroleum/src/features/home/views/home_screen.dart';
 import 'package:petroleum/src/features/profile/controllers/profile_controller.dart';
 import 'package:petroleum/src/features/profile/models/profile_model.dart';
 import 'package:petroleum/src/features/profile/views/complete_profile_screen.dart';
+import 'package:petroleum/src/features/records/views/add_record_page.dart';
 import 'package:petroleum/src/features/records/views/records_page.dart';
 import 'package:petroleum/src/features/splash/view/splash_page.dart';
 import 'package:petroleum/src/features/vehicles/views/vehicle_screen.dart';
@@ -28,6 +29,13 @@ class AppRoutes {
   static const String forgotPassword = "/auth/forgot-password";
   static const String verifyOTP = "/auth/verify-otp";
 
+  static const List<String> authRoutes = [
+    login,
+    register,
+    forgotPassword,
+    verifyOTP,
+  ];
+
   static const String completeProfile = "/complete-profile";
 
   // Home
@@ -42,12 +50,7 @@ class AppRoutes {
   //Profile
   static const String profile = "/profile";
 
-  static const List<String> authRoutes = [
-    login,
-    register,
-    forgotPassword,
-    verifyOTP,
-  ];
+  static const String addRecord = "/add-record";
 }
 
 @riverpod
@@ -107,6 +110,11 @@ GoRouter router(RouterRef ref) {
           path: AppRoutes.profile,
           builder: (context, state) {
             return const ComingSoonPage();
+          }),
+      GoRoute(
+          path: AppRoutes.addRecord,
+          builder: (context, state) {
+            return const AddRecordPage();
           }),
     ],
     redirect: (context, state) {

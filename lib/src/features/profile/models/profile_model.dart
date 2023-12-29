@@ -35,7 +35,7 @@ extension ProfileUtils on UserProfileModel {
   }
 
   bool get isComplete {
-    if (firstName == null || lastName == null || profilePictureUrl == null) {
+    if (firstName == null || lastName == null /* || profilePictureUrl == null */) {
       return false;
     } else {
       return true;

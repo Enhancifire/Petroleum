@@ -26,6 +26,22 @@ class RecordsRepository {
 
     return records;
   }
+
+  Future<RecordModel?> addRecord(RecordModel model) async {
+    try {
+      final res = await supabase
+          .from(SupabaseConstants.recordsTable)
+          .insert(model.toExtJson())
+          .select()
+          .single();
+
+      final record = RecordModel.fromJson(res);
+      return record;
+    } catch (e) {
+      _logger.e(e);
+      return null;
+    }
+  }
 }
 
 @riverpod
